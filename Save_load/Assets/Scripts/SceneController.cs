@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,17 @@ public class SceneController : MonoBehaviour {
         style.fontSize = 56;
         GUI.Label(new Rect(10, 10, 180, 80), "Active scene index : "  + SceneManager.GetActiveScene().buildIndex, style);
     }
-   
 
+    internal int GetSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
+    internal void SetScene(int sceneIndex)
+    {
+        if (SceneManager.GetActiveScene().buildIndex != sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+    }
 }
